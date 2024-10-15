@@ -68,10 +68,5 @@ func Setup() (err error) {
 	//EmailClient = open.NewEmailServiceClient(conn)
 	OpenClient = open.NewOpenClient(config.Config.OpenPlatform.Addr, config.Config.OpenPlatform.Token)
 
-	if err != nil {
-		zapx.Error("new lark client failed", zap.Error(err))
-		return err
-	}
-
 	return nil
 }

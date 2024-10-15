@@ -9,7 +9,7 @@ services:
       - "54250:54250"
       - "54252:54252"
     volumes:
-      - /root/service-dev/UniqueSSO2023/config.local.yaml:/opt/unique-sso/settings.yaml
+      - /root/service-dev/SSOBackend/config.local.yaml:/opt/unique-sso/settings.yaml
     networks:
       - database
       - apm
