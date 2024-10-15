@@ -1,0 +1,11 @@
+unique-sso
+
+.vscode/
+.idea/
+
+config.*.yaml
+!config.default.yaml
+
+config.local.yaml
+docker
+docker-compose.yml

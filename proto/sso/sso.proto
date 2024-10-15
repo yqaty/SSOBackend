@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "github.com/UniqueStudio/UniqueIDL/sso";
+
+package sso.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Object {
+    string action   = 1;
+    string resource = 2;
+}
+
+message CheckPermissionRequest {
+    string uid    = 1;
+    Object object = 2;
+}
+
+message CheckPermissionResponse {}
+
+message GetUserByUIDRequest {
+    string uid = 1;
+}
+
+enum Gender {
+    GENDER_UNSPECIFIED = 0;
+    GENDER_MALE        = 1;
+    GENDER_FEMALE      = 2;
+}
+
+message GetUserByUIDResponse {
+    string uid                          = 1;
+    string phone                        = 2;
+    string email                        = 3;
+    string name                         = 4;
+    google.protobuf.Timestamp join_time = 5;
+    string avatar_url                   = 6;
+    Gender gender                       = 7;
+    repeated string groups              = 8;
+    string lark_union_id                = 9;
+}
+
+service SSOService {
+    rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
+    rpc GetUserByUID(GetUserByUIDRequest) returns (GetUserByUIDResponse);
+}

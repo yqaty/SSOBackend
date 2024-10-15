@@ -1,0 +1,41 @@
+
+application:
+    mode: debug # debug / prod
+    http_host: 0.0.0.0
+    http_port: 5000
+    http_read_timeout: 5
+    http_write_timeout: 5
+    grpc_host: 0.0.0.0
+    grpc_port: 50000
+    session_secret:
+    session_domain:
+    traefik_redirect_uri:
+    http_allow_origin:
+        - http://localhost:3000
+
+apm:
+    name: uniqueSSO
+    report_backend:
+
+database:
+    postgres:
+        dsn: host= user= password= dbname= port=5432 sslmode=disable TimeZone=Asia/Shanghai
+        max_open_conn: 10
+        max_idle_conn: 100
+        max_life_seconds: 600
+    redis:
+        dsn: redis://<username>:<password>@<host>:<port>/<db_number>
+
+open_platform:
+    addr:
+    verification_code:
+        sms:
+            sign_id:
+            template_id:
+        email:
+            template_id:
+
+lark:
+    client_id:
+    client_secret:
+    redirect_uri:

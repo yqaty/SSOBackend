@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option go_package = "github.com/UniqueStudio/UniqueIDL/open";
+
+package open_platform.v1;
+
+message PushSMSRequest {
+    string sign_id         = 1;
+    string template_id     = 2;
+    string phone           = 3;
+    repeated string params = 4;
+}
+
+message PushSMSResponse {
+    uint64 fee = 1;
+}
+
+message SMSTemplate {
+    string template_id = 1;
+    string content     = 2;
+    int32 param_number = 3;
+}
+
+message GetAllSMSTemplatesRequest {}
+
+message GetAllSMSTemplatesResponse {
+    repeated SMSTemplate templates = 1;
+}
+
+service SMSService {
+    rpc PushSMS(PushSMSRequest) returns (PushSMSResponse);
+    rpc GetAllSMSTemplates(GetAllSMSTemplatesRequest) returns (GetAllSMSTemplatesResponse);
+}
+
+message PushEmailRequest {
+    string to              = 1;  // target email address
+    string subject         = 2;
+    string template_id     = 3;  // email template id
+    repeated string params = 4;  // template param set
+}
+
+message PushEmailResponse {}
+
+message EmailTemplate {
+    string template_id = 1;
+    string content     = 2;
+    int32 param_number = 3;
+    string alias       = 4;
+}
+
+message GetAllEmailTemplatesRequest {}
+
+message GetAllEmailTemplatesResponse {
+    repeated EmailTemplate templates = 1;
+}
+
+service EmailService {
+    rpc PushEmail(PushEmailRequest) returns (PushEmailResponse);
+    rpc GetAllEmailTemplates(GetAllEmailTemplatesRequest) returns (GetAllEmailTemplatesResponse);
+}

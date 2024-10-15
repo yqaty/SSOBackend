@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  sso-backend-dev:
+    #image: ccr.ccs.tencentyun.com/unique-studio/uniquesso:latest
+    build: .
+    container_name: sso-backend-dev2023
+    ports:
+      - "54250:54250"
+      - "54252:54252"
+    volumes:
+      - /root/service-dev/UniqueSSO2023/config.local.yaml:/opt/unique-sso/settings.yaml
+    networks:
+      - database
+      - apm
+
+networks:
+  database:
+    external: true
+
+  apm:
+    external: true
